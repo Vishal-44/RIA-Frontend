@@ -8,7 +8,6 @@ const Navbar = () => {
         <span className='font-bold text-xl text-[#333533] font-Inter'>RIA</span>
         {/* nav menu */}
         <ul className='flex flex-row gap-8 text-md font-Inter text-[#333533] cursor-pointer'>
-            <li >Templates</li>
             <li onClick={()=>{navigate('/resume-analyzer')}}>Analyze Resume</li>
             <li>Mock Interview</li>
         </ul>
