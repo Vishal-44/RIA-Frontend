@@ -23,7 +23,7 @@ const RBody = () => {
 
     const content = ['Feedback', 'Get ATS Score', 'Detailed Overview', 'Job Profile Suggestion']
   return (
-    <div className='w-screen px-36'>
+    <div className='w-screen px-36 pt-4'>
         <p className='font-DM-Serif-display text-[#333533] text-[56px] text-center'>Analyze your resume with ease</p>
         {/* card */}
         <div className='flex flex-row gap-28 justify-center mt-6'>
