@@ -5,7 +5,7 @@ import jr from '../assets/jobRole.svg'
 const RBody = () => {
     const [resume , setResume] = useState(null)
     const [jobRole, setJobRole] = useState('')
-
+    const [result,setResult]= useState(null)
     const handleJobRoleChange = (e) => {
         const {value} = e.target
         if(value){    
@@ -19,7 +19,35 @@ const RBody = () => {
         setResume(file)
     }
 
-    const handleSubmit = () => {}
+    const handleSubmit = async () => {
+        if (!resume || !jobRole) {
+            alert('Please provide both resume and job role.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('resume', resume);
+        formData.append('jobRole', jobRole);
+
+        try {
+            const response = await fetch('http://localhost:3000/r/analyse-resume', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to analyze the resume');
+            }
+
+            const result = await response.json();
+            console.log(result); // Log the response data
+            console.log(result.analysis)
+            console.log(typeof(result.analysis))
+            setResult(result.analysis)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     const content = ['Feedback', 'Get ATS Score', 'Detailed Overview', 'Job Profile Suggestion']
   return (
@@ -56,8 +84,7 @@ const RBody = () => {
                 </div>))
             }
 
-                
-
+                <div>{JSON.stringify(result)}</div>
                 
             </div>
         </div>
