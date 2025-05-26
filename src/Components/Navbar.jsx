@@ -9,7 +9,7 @@ const Navbar = () => {
         {/* nav menu */}
         <ul className='flex flex-row gap-8 text-md font-Inter text-[#333533] cursor-pointer'>
             <li onClick={()=>{navigate('/resume-analyzer')}}>Analyze Resume</li>
-            <li>Mock Interview</li>
+            <li onClick={()=>{navigate('/interview')}}>Mock Interview</li>
         </ul>
     </div>
   )
